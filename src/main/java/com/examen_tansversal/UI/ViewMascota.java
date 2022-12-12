@@ -4,6 +4,10 @@
  */
 package com.examen_tansversal.UI;
 
+import DTO.Persona;
+import Servicios.ListaClientes;
+import java.util.ArrayList;
+
 /**
  *
  * @author josevivas
@@ -13,8 +17,15 @@ public class ViewMascota extends javax.swing.JInternalFrame {
     /**
      * Creates new form ViewMascota
      */
-    public ViewMascota() {
+    public ViewMascota(ListaClientes listaClientes) {
         initComponents();
+        ArrayList<Persona> lista = listaClientes.ListarCombo();
+        for (Persona cliente : lista) {
+            comboDueno.addItem(cliente.getRun() + ", " + cliente.getNombres());
+        }
+           
+        
+        
     }
 
     /**
@@ -35,9 +46,9 @@ public class ViewMascota extends javax.swing.JInternalFrame {
         comboSexo = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtRun = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         btnReiniciar = new javax.swing.JButton();
+        comboDueno = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setMaximizable(true);
@@ -53,35 +64,38 @@ public class ViewMascota extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Sexo");
 
-        jLabel5.setText("RUN Dueño");
+        jLabel5.setText("Dueño");
 
         btnGuardar.setText("Guardar");
 
         btnReiniciar.setText("Reinicair");
+
+        comboDueno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnReiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
-                            .addComponent(txtNombre)
-                            .addComponent(jLabel2)
-                            .addComponent(txtChip)
-                            .addComponent(jLabel3)
-                            .addComponent(txtDetalles)
-                            .addComponent(jLabel4)
-                            .addComponent(comboSexo, 0, 259, Short.MAX_VALUE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtRun))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1)
+                                .addComponent(txtNombre)
+                                .addComponent(jLabel2)
+                                .addComponent(txtChip)
+                                .addComponent(jLabel3)
+                                .addComponent(txtDetalles)
+                                .addComponent(jLabel4)
+                                .addComponent(comboSexo, 0, 259, Short.MAX_VALUE)
+                                .addComponent(jLabel5))
+                            .addComponent(comboDueno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -106,12 +120,12 @@ public class ViewMascota extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtRun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comboDueno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnReiniciar))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
@@ -121,6 +135,7 @@ public class ViewMascota extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnReiniciar;
+    private javax.swing.JComboBox<String> comboDueno;
     private javax.swing.JComboBox<String> comboSexo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -130,6 +145,5 @@ public class ViewMascota extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtChip;
     private javax.swing.JTextField txtDetalles;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtRun;
     // End of variables declaration//GEN-END:variables
 }

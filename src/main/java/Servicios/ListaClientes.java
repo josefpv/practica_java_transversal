@@ -41,6 +41,11 @@ public class ListaClientes implements IListClientes {
         return personaTexto;
         
     }
+    
+    @Override
+    public ArrayList<Persona> ListarCombo(){
+        return this.lista;
+    }
 
     @Override
     public String Listar(int posicion) {

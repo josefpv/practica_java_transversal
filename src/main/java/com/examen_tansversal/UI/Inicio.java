@@ -137,7 +137,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       ViewMascota vMascota = new ViewMascota();
+       ViewMascota vMascota = new ViewMascota( listaClientes);
        escritorio.add(vMascota);
        vMascota.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
